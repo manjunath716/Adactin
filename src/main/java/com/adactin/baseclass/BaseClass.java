@@ -355,10 +355,10 @@ public class BaseClass {
 	}
 	
 	//===ScreenShot===
-	public static void ScreenShot() throws IOException {
+	public static void ScreenShot(String string) throws IOException {
 		TakesScreenshot ts=(TakesScreenshot) driver;
 		File src=ts.getScreenshotAs(OutputType.FILE);
-		File dsc=new File("C:\\Users\\karthick rs\\eclipse-workspace\\MainSelenium\\ScreenShot\\sample.png");
+		File dsc=new File("C:\\Users\\Manjunath\\eclipse-workspace\\AdactinProject\\Screenshot\\sample.png");
 		FileUtils.copyFile(src,dsc);
 	
 	}

@@ -1,5 +1,7 @@
 package com.adactin.stepdefinition;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 
 import com.adactin.baseclass.BaseClass;
@@ -28,12 +30,16 @@ public class StepDefinition extends BaseClass {
 		System.out.println("Scenario:  " + name);
 
 	}
+
 	@After
-	public void afterHooks(Scenario scenario) {
+	public void afterHooks(Scenario scenario) throws IOException {
 		String status = scenario.getStatus();
-		System.out.println("Scenario:   " +status);
+		System.out.println("Scenario:   " + status);
+		if (scenario.isFailed()) {
+		ScreenShot(scenario.getName());
+		}
 	}
-	
+
 	@Given("^User launches the application$")
 	public void user_launches_the_application() throws Throwable {
 		/*
@@ -87,6 +93,7 @@ public class StepDefinition extends BaseClass {
 	public void user_chooses_select_a_particular_as_in_the_location_field(String value, String option)
 			throws Throwable {
 		selectDropDown(pom.getShp().getLocation(), option, value);
+
 	}
 
 	@When("^User chooses/select a particular \"([^\"]*)\" as \"([^\"]*)\" in the hotel field$")
